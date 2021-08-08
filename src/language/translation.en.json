@@ -1,0 +1,17 @@
+{
+  "ERR_INTERNAL_SERVER": "Internal Server Error.",
+  "ERR_FILE_NOT_FOUND": "File does not found.",
+  "ERR_MINI_LENGTH": "{{field}} must be {{min}} character long.",
+  "ERR_MAX_LENGTH": "{{field}} can't be {{max}} character long.",
+  "PROPERTY_ADD_SUCCESS": "Property added successfully.",
+  "AREA_GET_SUCCESS": "Area get successfully.",
+  "PROPERTY_GET_SUCCESS": "Property get successfully.",
+  "PROPERTY_DETAIL_GET_SUCCESS": "Property details get successfully.",
+  "PROPERTY_DETAIL_GET_EMPTY_SUCCESS": "Property not available.",
+  "PROPERTY_ADDED_FAVOURITE_SCUCEESS": "Property added in your favourite.",
+  "PROPERTY_REMOVE_FAVOURITE_SUCCESS": "Property remove from your favourite.",
+  "FILE_REQURED_ERROR": "Please add atleast one or maximum five image(s) of property.",
+  "NOT_AN_IMAGE": "{{file}} is not an image.",
+  "ERR_GENRIC_SYNTAX": "Genric syntext error",
+  "ERR_URL_NOT_FOUND": "This URL not found."
+}
