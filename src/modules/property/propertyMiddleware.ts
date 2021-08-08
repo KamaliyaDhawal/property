@@ -6,6 +6,7 @@ import { Log } from "../../helpers/logger";
 import { FileUpload } from "../../helpers/fileUpload";
 import { Tables } from "../../config/tables";
 import { Utils } from "../../helpers/utils";
+import { ResponseBuilder } from "../../helpers/responseBuilder";
 
 export class PropertyMiddleware {
     private logger = Log.getLogger();
@@ -18,7 +19,8 @@ export class PropertyMiddleware {
             const images = req.files.images[0] != undefined ? req.files.images : [req.files.images];
             const { otherFile, fileName } = await this.fileUpload.imageValidation(images);
             if (otherFile) {
-                return res.status(Constants.ERROR_CODE).send({ code: Constants.ERROR_CODE, msg: req.t("NOT_AN_IMAGE", { file: fileName }) });
+                const rb: ResponseBuilder = ResponseBuilder.badRequest(req.t("NOT_AN_IMAGE", { file: fileName }));
+                return res.status(rb.code).json(rb);
             }
             next();
         }
@@ -34,10 +36,12 @@ export class PropertyMiddleware {
                 next();
             } else {
                 this.logger.error("ERROR : ", data);
-                return res.status(Constants.INTERNAL_SERVER_ERROR_CODE).send({ code: Constants.ERROR_CODE, msg: req.t("ERR_INTERNAL_SERVER") });
+                const rb: ResponseBuilder = ResponseBuilder.badRequest(req.t("ERR_INTERNAL_SERVER"));
+                res.status(rb.code).json(rb);
             }
         } else {
-            return res.status(Constants.INTERNAL_SERVER_ERROR_CODE).send({ code: Constants.ERROR_CODE, msg: req.t("ERR_INTERNAL_SERVER") });
+            const rb: ResponseBuilder = ResponseBuilder.badRequest(req.t("ERR_INTERNAL_SERVER"));
+            return res.status(rb.code).json(rb);
         }
     }
 }

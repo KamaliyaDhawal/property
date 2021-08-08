@@ -60,7 +60,7 @@ export class PropertyController {
       res.sendFile(destination);
     } else {
       const rb: ResponseBuilder = ResponseBuilder.badRequest(req.t("ERR_FILE_NOT_FOUND"));
-      res.status(rb.code).json(rb);
+      return res.status(rb.code).json(rb);
     }
   }
 }
